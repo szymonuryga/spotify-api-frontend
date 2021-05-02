@@ -16,6 +16,10 @@ export function saveTrack(track) {
 	return http.post(apiEndpoint + 'add-track/', track);
 }
 
-export function deleteTrack(trackId) {
-	return http.delete(apiEndpoint + 'delete-track/' + trackId + '/');
+export function deleteTrack(trackName) {
+	return http.delete(apiEndpoint + 'delete/selectedTrack/' + trackName + '/');
+}
+
+export function getFavourite() {
+	return http.get(apiEndpoint + 'favourite/');
 }
