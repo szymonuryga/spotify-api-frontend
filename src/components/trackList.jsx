@@ -1,17 +1,29 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import Input from './input';
-import Table from './Table';
 import {
 	deleteTrack,
 	getFavourite,
 	getTracks,
 	saveTrack,
 } from './../service/trackService';
+import Like from './like';
+import TableBody from './tableBody';
 
 export default function TrackList() {
 	const [artistName, setArtistName] = useState('');
 	const [trackList, setTrackList] = useState([]);
 	const [favouriteTracks, setFavouriteTracks] = useState([]);
+	const columns = [
+		{
+			path: 'trackName',
+		},
+		{
+			key: 'like',
+			content: (track) => (
+				<Like liked={track.liked} onClick={() => handleLikeEvent(track)} />
+			),
+		},
+	];
 
 	useEffect(() => {
 		async function getData() {
@@ -59,11 +71,7 @@ export default function TrackList() {
 				onHandleChange={handleChange}
 				handleClick={handleClick}
 			/>
-			<Table
-				trackList={trackList}
-				onClick={handleLikeEvent}
-				favouriteTracks={favouriteTracks}
-			/>
+			<TableBody data={trackList} columns={columns} />
 		</Fragment>
 	);
 }

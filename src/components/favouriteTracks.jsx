@@ -1,12 +1,28 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { deleteTrack, getFavourite } from '../service/trackService';
-import FavTable from './favTable';
 import SearchContext from './../context/searchContext';
 import { toast } from 'react-toastify';
+import TableBody from './tableBody';
 
 export default function FavouriteTracks() {
 	const currentQuery = useContext(SearchContext);
 	const [favTrack, setFavTrack] = useState([]);
+	const columns = [
+		{
+			path: 'trackName',
+		},
+		{
+			key: 'delete',
+			content: (item) => (
+				<i
+					style={{ cursor: 'pointer' }}
+					className="fa fa-trash-o"
+					aria-hidden="true"
+					onClick={() => handleDelete(item)}
+				></i>
+			),
+		},
+	];
 
 	useEffect(() => {
 		async function getData() {
@@ -18,7 +34,7 @@ export default function FavouriteTracks() {
 	});
 
 	const getInforamtion = () => {
-		const count = favTrack.length;
+		const count = filtered.length;
 		if (count === 0) return <p>You don't have any favourite songs :(</p>;
 		else if (count === 1) return <p>There is one song</p>;
 		else return <p>There are {count} songs</p>;
@@ -49,8 +65,7 @@ export default function FavouriteTracks() {
 				<h1 className="m-5">Your Favourite Songs</h1>
 				{getInforamtion()}
 			</div>
-
-			<FavTable data={filtered} onDelete={handleDelete} />
+			<TableBody data={filtered} columns={columns} />
 		</div>
 	);
 }
