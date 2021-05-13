@@ -1,13 +1,13 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import Input from './input';
+import Input from './common/input';
 import {
 	deleteTrack,
 	getFavourite,
 	getTracks,
 	saveTrack,
 } from './../service/trackService';
-import Like from './like';
-import TableBody from './tableBody';
+import Like from './common/like';
+import TableBody from './common/tableBody';
 
 export default function TrackList() {
 	const [artistName, setArtistName] = useState('');

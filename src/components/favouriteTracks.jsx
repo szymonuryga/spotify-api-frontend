@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { deleteTrack, getFavourite } from '../service/trackService';
 import SearchContext from './../context/searchContext';
 import { toast } from 'react-toastify';
-import TableBody from './tableBody';
+import TableBody from './common/tableBody';
 
 export default function FavouriteTracks() {
 	const currentQuery = useContext(SearchContext);
