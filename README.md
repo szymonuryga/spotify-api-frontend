@@ -1,6 +1,6 @@
 # Demo
 
-[Demo](./gif/demo.gif)
+You can see how application works here - [Demo](./gif/demo.gif)
 
 
 
