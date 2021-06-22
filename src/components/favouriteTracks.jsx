@@ -31,7 +31,7 @@ export default function FavouriteTracks() {
 		}
 
 		getData();
-	});
+	}, []);
 
 	const getInforamtion = () => {
 		const count = filtered.length;

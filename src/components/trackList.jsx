@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect, Suspense } from 'react';
 import Input from './common/input';
 import {
 	deleteTrack,
@@ -71,7 +71,9 @@ export default function TrackList() {
 				onHandleChange={handleChange}
 				handleClick={handleClick}
 			/>
-			<TableBody data={trackList} columns={columns} />
+			<Suspense fallback={<h1>Loading data</h1>}>
+				<TableBody data={trackList} columns={columns} />
+			</Suspense>
 		</Fragment>
 	);
 }
