@@ -1,6 +1,6 @@
 # Demo
 
-[./gif/demo.gif]
+[Demo](./gif/demo.gif)
 
 
 
